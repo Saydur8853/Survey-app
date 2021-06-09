@@ -5,9 +5,46 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background-image: url(./assets/khalifa-tower-3840x2160-dubai-best-hotels-tourism-travel-resort-4610.jpg);
+    background-position: center;
+    background-size: cover;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.survey{
+  width: 800px;
+  background-color: rgba(31, 30, 29, 0.8);
+  color: #FFFFFF;
+  padding: 10px 0px 10px 0px;
+  border-radius: 15px;
+  margin-top: 50px;
+}
+
+.header{
+  text-align: center;
+  font-size: 20px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+form{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.form-skill{
+  margin-top: 60px;
+}
+.form-check{
+  margin-right: 25px;
+}
+
+.btn{
+   margin:  30px 0px 30px 340px;
+  
+  
 }

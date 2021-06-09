@@ -4,10 +4,10 @@ import React from 'react'
 const initialState = {
     name:'',
     email:'',
-    password:'',
+    phonenumber:'',
     bio:'',
-    country: '',
     gender: '',
+    birthday:'',
     skills: []
 }
 class PostFrom extends React.Component{
@@ -33,7 +33,7 @@ class PostFrom extends React.Component{
                 this.setState({
                     ...this.state,
                     skills:
-                    this.state.skills.filter(skill => skill =! event.target.value)
+                    this.state.skills.filter(skill => skill !== event.target.value)
                 })
             }
         } else{
@@ -56,9 +56,14 @@ class PostFrom extends React.Component{
 
     render(){
         return(
+            
+            <div className='survey'>
+                <div className='header'>Survey Form</div>
+            <hr></hr>
         <form ref={this.myForm} onSubmit= {this.submitHandler}>
-            <div className= 'form-group'>
-                <label htmlFor='name'> Enter Your Full name </label>
+            <div className="row">
+            <div className= 'form-group col-md-6'>
+                <label htmlFor='name'> Enter Your Full name: </label>
                 <input 
                 className ='form-control'
                 type = 'text' 
@@ -70,8 +75,8 @@ class PostFrom extends React.Component{
                 />
             </div>
 
-            <div className= 'form-group'>
-                <label htmlFor='email'> Enter Your email </label>
+            <div className= 'form-group col-md-6'>
+                <label htmlFor='email'> Enter Your email:</label>
                 <input
                 className ='form-control' 
                 type = 'email' 
@@ -82,21 +87,37 @@ class PostFrom extends React.Component{
                 onChange = {this.changeHandler}
                 />
             </div>
+            </div>
+            &nbsp;
 
-            <div className= 'form-group'>
-                <label htmlFor='password'> Enter Your Password </label>
-                <input 
-                className ='form-control'
-                type = 'password' 
-                placeholder='Enter Your password'
-                name='password'
-                id='password'
-                value={this.state.password}
-                onChange = {this.changeHandler}/>
+            <div className="row">
+            <div className= 'form-group col-md-6'>
+            <label htmlFor="birthday">Birthday:</label>
+            <input className ='form-control'
+            type="date" 
+            id="birthday" 
+            name="birthday"
+            value={this.state.birthday}
+            onChange ={this.changeHandler}/>
             </div>
 
+
+            <div className= 'form-group col-md-6'>
+                <label htmlFor='phonenumber'> Enter Your Phone Number: </label>
+                <input 
+                className ='form-control'
+                type = 'number' 
+                placeholder='Enter Your Phone Number'
+                name='phonenumber'
+                id='phonenumber'
+                value={this.state.phonenumber}
+                onChange = {this.changeHandler}/>
+            </div>
+            </div>
+            &nbsp;
+
             <div className= 'form-group'>
-                <label htmlFor='bio'> Enter Your Bio </label>
+                <label htmlFor='bio'> Enter Your Bio: </label>
                 <textarea 
                 className ='form-control'
                 type = 'text' 
@@ -106,40 +127,41 @@ class PostFrom extends React.Component{
                 value={this.state.bio}
                 onChange = {this.changeHandler}/>
             </div>
+            &nbsp;
 
-            <div className='form-group'>
-                <label htmlFor="country"> Choose Your Country</label>
-                <select className='form-control' onChange={this.changeHandler} name="country" id='country'>
-                    <option>Select Your Country</option>
-                    <option value="Bangladesh"> Bangladesh</option>
-                    <option value="Australia"> Australia</option>
-                    <option value="Germany"> Germany</option>
-                    <option value="New Zeeland"> New Zeeland</option>
-                </select>
-            </div>
-
-            <div className= 'form-group'>
-            <label htmlFor="country"> Gender : </label>
+            <div className="row">
+            <div className= 'form-group col-md-4'>
+            <label htmlFor="gender"> Gender : </label>
+            <br></br>
+            &nbsp;&nbsp;&nbsp;
                 <div className= "form-check">
-                    <input onChange={ this.changeHandler} type="radio" name="gender" id="gender1" value='Male'></input>
+                    <input onChange={ this.changeHandler} type="radio" name="gender" id="gender1" value='Male'></input> 
+                    &nbsp;
                     <label htmlFor = 'gender1'> Male </label>
                 </div>
+                &nbsp;&nbsp;&nbsp;&nbsp;
 
                 <div className= "form-check">
                     <input onChange={ this.changeHandler} type="radio" name="gender" id="gender2" value='Female'></input>
+                    &nbsp;
                     <label htmlFor = 'gender2'> Female </label>
                 </div>
+                &nbsp;&nbsp;&nbsp;&nbsp;
 
                 <div className= "form-check">
                     <input onChange={ this.changeHandler} type="radio" name="gender" id="gender3" value='Other'></input>
+                    &nbsp;
                     <label htmlFor = 'gender3'> Other </label>
                 </div>
             </div>
 
-            <label htmlFor="country"> Skills : </label>
 
-            <div className='form-group'>
-                <div className= 'form-check'>
+            
+
+            <div className='form-skill col-md-8' > 
+            <label htmlFor="skill">Skills :</label><br/>&nbsp;
+                <div className='checkboxes' style={{display:'flex', flexDirection:'row'}}>
+                    <div className= 'form-check'>
                     <input onChange={this.changeHandler} className = 'form-check-input' name='skills' id='js' value='javascript' type="checkbox"/>
                     <label htmlFor="js"> javascript</label>
                 </div>
@@ -148,7 +170,6 @@ class PostFrom extends React.Component{
                     <input onChange={this.changeHandler} className = 'form-check-input' name='skills' id='react' value='React Js' type="checkbox"/>
                     <label htmlFor="react"> React Js</label>
                 </div>
-
                 <div className= 'form-check'>
                     <input onChange={this.changeHandler} className = 'form-check-input' name='skills' id='angular' value='Angular' type="checkbox"/>
                     <label htmlFor="angular"> Angular</label>
@@ -158,10 +179,14 @@ class PostFrom extends React.Component{
                     <input onChange={this.changeHandler} className = 'form-check-input' name='skills' id='Python' value='Python' type="checkbox"/>
                     <label htmlFor="python"> Python</label>
                 </div>
+                </div>
             </div>
+        </div>
 
             <button className = 'btn btn-primary' type = 'submit'> Submit </button>
         </form>
+
+        </div>
 
         );
     }
